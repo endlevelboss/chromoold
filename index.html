@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>ChromoBrowser</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="globals.js"></script>
+        <script src="onload.js"></script>
+        <script src="data.js"></script>
+        <script src="parser.js"></script>
+        <script src="chromodisplay.js"></script>
+        <script src="rawdata.js"></script>
+        <script src="relationtree.js"></script>
+        <script src="incommon.js"></script>
+        <script src="mouse.js"></script>
+        <script src="gui.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <!-- General gui -->
+        <div id="topmenu" class="topmenu">
+            <div id="chromobrowserButton" class="topmenubutton topbutton1 topbuttonselected" onclick="ChromoGui.topButtonClick(1)">Chromobrowser</div>
+            <div id="relationtreeButton" class="topmenubutton topbutton2" onclick="ChromoGui.topButtonClick(2)">Relations</div>
+            <div id="incommonButton" class="topmenubutton topbutton3" onclick="ChromoGui.topButtonClick(3)">In common with...</div>
+        </div>
+
+
+        <!-- ChromoBrowser starter her -->
+        <div id="cbrowser" class="chromodisplay">
+            <input type="file" id="fileinput" multiple="multiple">
+
+
+            <div id="browserbuttons" class="browserbuttons">
+                
+        <form class="browserbuttons chromo"
+            name="chromoForm"
+            onSubmit="return false;">
+            <select name="selectChromo" onchange="onChange(this)">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>X</option>
+            </select>
+        </form>
+                <form name="blocklengthlimit" onsubmit="return false" class="browserbuttons limit">
+                        <select name="selectLimit" onchange="onLimitChange(this)">
+                            <option>1</option>
+                            <option>3</option>
+                            <option selected>5</option>
+                            <option>10</option>
+                        </select>
+                    </form>
+                <form name="comparisonForm" onsubmit="return false;">
+
+            <select name="selectComparison" onchange="onComparisonChange(this)" class="browserbuttons display">
+                <option>En</option>
+                <option>To, felles treff</option>
+                <option>To</option>
+                <option>Tre, felles treff</option>
+                <option>To og to, felles</option>
+                <option>Custom?</option>
+            </select>
+        </form>
+                <input id="useParentinfo" type="checkbox" onchange="changeDisplay()" class="browserbuttons crossover">
+
+                </div>
+                    
+                    
+                
+        
+                    
+                    
+                
+        <form name="selectPersonA" onsubmit="return false;" class="selectperson">
+            <select id="personAList" onchange="onPersonSelectionChange(this, 0)"></select>
+        </form>
+                    
+        <form name="selectPersonB" onsubmit="return false;">
+            <select id="personBList" onchange="onPersonSelectionChange(this,1)"></select>
+        </form>
+                    
+        <form name="selectPersonC" onsubmit="return false;">
+            <select id="personCList" onchange="onPersonSelectionChange(this,2)"></select>
+        </form>
+                    
+        <form name="selectPersonD" onsubmit="return false;">
+            <select id="personDList" onchange="onPersonSelectionChange(this,3)"></select>
+        </form>
+
+
+
+            <!-- Disse knappene skal til en annen meny -->
+                    
+                    <input type="file" id="autosomal" >
+                
+                    <button onclick="reduceRawdata()" >reduser</button>
+                
+                    <button onclick="storeReducedMasterList()" >lagre</button>
+                
+                    <button onclick="cleanCustom()" hidden>test</button>
+                <!--  ------------------------------------------------ -->
+
+
+
+            
+        <canvas id="chromobrowser" class="chromobrowser" width="1600" height="800"></canvas>
+
+        
+        
+
+        
+
+        <div id="openDialog" class="myDialog" draggable="true">
+            <div>
+                <a href="#close" id="myClose" title="Close" class="close">X</a>
+                <h3 id="dialogHeader">Dialog</h3>
+                <p>Her kommer etterhvert mer matnyttig info</p>
+                <div class="drop-menu"> <div>Velg antatt slektskap</div>
+                    <ul id="ancestorSelector" class="sub-menu"></ul>
+                </div>
+            </div>
+        </div>
+        <a id="row0dad" class="rowButton" onclick="addCrossover(0,true)">|</a>
+        <a id="row0mum" class="rowButton" onclick="addCrossover(0,false)">|</a>
+        <a id="row1dad" class="rowButton" onclick="addCrossover(1,true)">|</a>
+        <a id="row1mum" class="rowButton" onclick="addCrossover(1,false)">|</a>
+        <a id="row2dad" class="rowButton" onclick="addCrossover(2,true)">|</a>
+        <a id="row2mum" class="rowButton" onclick="addCrossover(2,false)">|</a>
+        <a id="row3dad" class="rowButton" onclick="addCrossover(3,true)">|</a>
+        <a id="row3mum" class="rowButton" onclick="addCrossover(3,false)">|</a>
+        
+        <img id="colorImage" class="hidden" src="smallColorPicker.jpg" alt="ColorPicker">
+        </div>
+
+
+
+
+        <!-- Relationships starter her -->
+        <div id="relationships" class="hidden">
+            <canvas id="relationshipTree" class="relationtree" width="1600" height="800"></canvas>
+            <div id="relationInfo" class="relationinfo">
+            <div id="relationName"></div>
+            <button onclick="selectFather()">Sett far</button>
+            <div id="fatherName">test</div>
+            <button onclick="selectMother()">Sett mor</button>
+            <div id="motherName">test</div>
+            <canvas id="myColor" width="20" height="20" ></canvas>
+         </div>
+         <canvas id="colorSelect" class="colorselectCanvas" width="200" height="51"></canvas>
+         <div class="relationadd">
+            <button onclick="addPerson()">Legg til person</button>
+            <input id="addtotree" type="text">
+        </div>
+    </div>
+
+
+
+
+    <!-- InCommon starter her -->    
+    <div id="incommon" class="hidden">
+        <div class="incommon">
+        <form name="selectInCommonUser" onsubmit="return false;">
+            <select id="inCommonUser" onchange="onInCommonUserChange(this)"></select>
+        </form>
+        <form name="selectInCommonMatch" onsubmit="return false;">
+            <select id="inCommonMatch" onchange="onInCommonMatchChange(this)"></select>
+        </form>
+            </div>
+        <form id="othermatches" class="namelist"> 
+        </form> 
+    </div>
+</body>
+</html>

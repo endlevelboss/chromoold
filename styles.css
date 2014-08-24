@@ -1,0 +1,286 @@
+body {
+    font-family: sans-serif;
+    background-color: #efa800;
+}
+
+.topmenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #808080;
+    height: 30px;
+    width: 100%;
+    z-index: 100;
+}
+
+.topmenubutton {
+    position: fixed;
+    background: #0ad032;
+    height: 25px;
+    width: 140px;
+    top: 5px;
+    text-align: center;
+}
+
+.topmenubutton:hover {
+    background: #9cf120;
+    text-decoration-color: #f6f0e4;
+}
+
+.topbuttonselected {
+    background: #10eb3c;
+    color: #f6f0e4;
+}
+
+.topbutton1 {
+    left: 150px;
+}
+.topbutton2 {
+    left: 295px;
+}
+.topbutton3 {
+    left: 440px;
+}
+
+
+.chromodisplay {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    width: 150px;
+    z-index: 999;
+}
+
+
+.browserbuttons {
+    position: fixed;
+    top: 5px;
+}
+
+.browserbuttons.chromo {
+    left: 650px;
+}
+
+.browserbuttons.limit {
+    left: 700px;
+}
+
+.browserbuttons.display {
+    left: 750px;
+}
+
+.browserbuttons.crossover {
+    left: 940px;
+}
+
+.chromobrowser {
+    position: fixed;
+    top: 30px;
+    left: 150px;
+    background: white;
+    z-index: 9999;
+}
+
+
+.selectperson {
+    transform: rotate(90);
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.relationtree {
+    position: fixed;
+    top: 30px;
+    left: 150px;
+    background: white;
+}
+
+.relationinfo {
+    position: fixed;
+    top: 80px;
+    left: 0px;
+    width: 150px;
+    height: 400px;
+    /*
+    padding: 5px 20px 13px 20px;
+    border-radius: 6px;
+    border: 2px solid #474747;
+    background: #bababa; */
+    z-index: 99998;
+}
+
+.relationadd {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    width: 150px;
+    height: 50px;
+    z-index: 99999;
+    background: #bababa;
+}
+
+.colorselectCanvas {
+    position: fixed;
+    top: 280px;
+    left: 10px;
+    z-index: 99999;
+}
+
+.incommon {
+    position: fixed;
+    top: 50px;
+    left: 150px;
+    width: 100%;
+}
+
+.namelist {
+    position: absolute;
+    top: 50px;
+    left: 500px;
+}
+
+table {
+    color: #808080;
+}
+
+.myDialog {
+    position: fixed;
+    font-family:  Arial, Helvetica, sans-serif;
+    top: 100px;
+    left: 100px;
+    /*background: rgba(0,0,0,0.8);*/
+    z-index: 99999;
+    opacity: 0;
+    
+    pointer-events: none;
+}
+
+.myDialog:target {
+    -webkit-transition: opacity 100ms ease-in;
+	-moz-transition: opacity 100ms ease-in;
+	transition: opacity 100ms ease-in;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.myDialog.display {
+    -webkit-transition: opacity 100ms ease-in;
+	-moz-transition: opacity 100ms ease-in;
+	transition: opacity 100ms ease-in;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.myDialog.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.myDialog > div {
+    width: 400px;
+    position: relative;
+    /*margin: 10% auto;*/
+    padding: 5px 20px 13px 20px;
+    border-radius: 6px;
+    border: 2px solid #474747;
+    background: #bababa;
+}
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 24px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.rowButton {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 24px;
+    left: 150px;
+    top: 100px;
+    z-index: 99999;
+    text-align: center;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.rowButton.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.close:hover {background: #00d9ff;}
+
+.rowButton:hover {background: #00d9ff;}
+
+.drop-menu {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+    padding: 10px 10px;
+    font-size: 12px;
+    height: 15px;
+    max-height: 15px;
+    width: 300px;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #f6f0e4;
+}
+
+.drop-menu:hover .sub-menu {
+    display: inline-block;
+}
+
+.sub-menu {
+    display: none;
+    width: 300px;
+    background: #fff;
+    padding: 10px 10px;
+    margin-left: -11px;
+    margin-top: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0px 13px 25px rgba(0,0,0, 0.2); 
+}
+
+.sub-menu li {
+    list-style-type: none;
+    display: block;
+    border-bottom: 1px dotted #eaeaea;
+    font-size: 10px;
+    height: 12px;
+    padding: 8px 0;
+}
+
+.sub-menu li canvas {
+    margin-right: .5em;
+}
+
+.sub-menu li:hover {
+    border-bottom: 1px dotted #bababa;
+}
