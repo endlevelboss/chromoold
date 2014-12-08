@@ -1,3 +1,4 @@
+/*
 function runTempNot() {
     // midlertidig funksjon, for litt testdata intill det blir mulig aa lage fargekart selv
     console.log('running temp');
@@ -7,7 +8,7 @@ function runTempNot() {
     setCustom('heritage', 'Tor A Ingebrigtsen c/o  Ingebrigtsen ', [2,0,0,0,0,0,0,1,1,0,1,0]);
     setCustom('heritage','Ole Bakstad c/o  Ingebrigtsen' , [2,1,1,1,1,1,1,2,2,2,2,1]);
     setCustom('heritage','Randi Bakstad c/o  Ingebrigtsen' , [2,0,0,0,1,1,1,2,2,2,2,2]);
-}
+} */
 
 function User(name) {
     this.name = name;
@@ -73,9 +74,6 @@ function Tuple(varA, varB){
     this.varA = varA;
     this.varB = varB;
 }
-
-
-
 
 function checkData(mymatch, dataarray) {
     for (var i = 0; i < mymatch.matchblocks.length; i++) {

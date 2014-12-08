@@ -89,6 +89,7 @@ body {
 .hidden {
     opacity: 0;
     pointer-events: none;
+    width: 0;
 }
 
 .relationtree {
@@ -149,15 +150,14 @@ table {
 .myDialog {
     position: fixed;
     font-family:  Arial, Helvetica, sans-serif;
-    top: 100px;
-    left: 100px;
+    top: 250px;
+    left: 0;
+    width: 150px;
     /*background: rgba(0,0,0,0.8);*/
     z-index: 99999;
-    opacity: 0;
-    
-    pointer-events: none;
 }
 
+/*
 .myDialog:target {
     -webkit-transition: opacity 100ms ease-in;
 	-moz-transition: opacity 100ms ease-in;
@@ -182,12 +182,11 @@ table {
 .myDialog > div {
     width: 400px;
     position: relative;
-    /*margin: 10% auto;*/
     padding: 5px 20px 13px 20px;
     border-radius: 6px;
     border: 2px solid #474747;
     background: #bababa;
-}
+} */
 
 .close {
     background: #606061;
@@ -247,7 +246,7 @@ table {
     font-size: 12px;
     height: 15px;
     max-height: 15px;
-    width: 300px;
+    width: 120px;
     background: #fff;
     cursor: pointer;
     border: 1px solid #f6f0e4;
@@ -259,7 +258,7 @@ table {
 
 .sub-menu {
     display: none;
-    width: 300px;
+    width: 120px;
     background: #fff;
     padding: 10px 10px;
     margin-left: -11px;
@@ -283,4 +282,5 @@ table {
 
 .sub-menu li:hover {
     border-bottom: 1px dotted #bababa;
+    text-overflow: ellipsis;
 }
