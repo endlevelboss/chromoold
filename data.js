@@ -182,3 +182,14 @@ function displayData() {
         display.appendChild(li);
     }
 }
+
+
+function resetLocalstorage() {
+	var mydb = indexedDB.deleteDatabase('chromobrowser');
+	mydb.onsuccess = function (event) {
+		console.log('database slettet');
+	}
+	mydb.onerror = function (event) {
+		console.log('trpoblemer');
+	}
+}

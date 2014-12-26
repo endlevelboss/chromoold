@@ -7,7 +7,7 @@ var db; // ref til databasen
 // fra data.js
 var kitNames = [];  // brukernavn paa alle userkits i databasen
 var matches = [];  // custom data 
-var kitRawdata = []; // kortversjon av raadata for de som inneholder det
+var kitRawdata = []; // autosomal rawdata 
 //var colorcode = ['khaki','blue', 'darkblue', 'deepskyblue', 'red', 'darkred', 'orangered', 'green', 'yellow','khaki','khaki']; // temp fargekart
 var colorcode = [];
 var heritagemapper = [];

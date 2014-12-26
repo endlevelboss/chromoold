@@ -150,7 +150,7 @@ function callAutosomalReader(file){
             testAutosomal(result[i]);
         }
 
-        //console.log(selectedPersonD);
+        console.log(selectedPersonD);
 
         var transaction = db.transaction(["raw"], "readwrite");
         var store = transaction.objectStore("raw");

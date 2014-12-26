@@ -225,6 +225,7 @@ function drawRawComparison(selectedA, selectedB, displayrow) {
     var personA = sortChromodata(selectedA);
     var rawA = sortRawdata(selectedA);
     var rawB = sortRawdata(selectedB);
+    console.log('rawfiler: ' + rawA.length +' '+ rawB.length);
     var compared = compareRaw(rawA, rawB);
     var comparedBlockdata = getChromodataByMatchname(personA, selectedB.name);
     drawRaw(compared, comparedBlockdata, displayrow);
@@ -305,7 +306,7 @@ function testInCommon(person, inCommonList, useInCommon) {
 }
 
 function drawRaw(data, blockdata, afterRowNumber){
-    //alert('tegner raw');
+    // alert('tegner raw');
     var canvas = document.getElementById("chromobrowser");
     var context = canvas.getContext("2d");
     var scale = (canvas.width - 50) / chromolength[chromosomeIndex];
@@ -322,7 +323,7 @@ function drawRaw(data, blockdata, afterRowNumber){
         var rectWidth = (blockdata[j].end - blockdata[j].start) * scale;
         context.fillRect(xpos, ypos, rectWidth, 6);
     }
-
+    console.log(data.length);
     if (data.length > 0) {
         context.fillStyle = 'lightGrey';
         context.fillRect(25, ypos, canvas.width - 50, 3);
@@ -778,7 +779,8 @@ function sortChromodata(myowner){
 
 
 function sortRawdata(selectedPerson) {
-    //console.log('sjekker raw');
+    //console.log('sjekker om raw eksisterer ' + kitRawdata.length);
+    console.log('finner raw for ' + selectedPerson.name);
     var myraw = [];
     for (var j = 0; j < kitRawdata.length; j++) {
         if(kitRawdata[j].name == selectedPerson.name) {
@@ -792,7 +794,7 @@ function sortRawdata(selectedPerson) {
             mydata[mydata.length] = myraw[i];
         }
     }
-    //console.log(mydata.length);
+    console.log(mydata.length);
     return mydata;
 }
 
@@ -858,6 +860,7 @@ function recursiveFindEqual(a, b, arrayA, arrayB, ordered) {
 }
 
 function compareRaw(rawA, rawB) {
+	console.log('sjekker raw ' + rawA.length + ' ' + rawB.length);
     var raw = simpleRawSort(rawA, rawB);
     var comparison = new Array();
     var compared = null;

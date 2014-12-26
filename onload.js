@@ -170,19 +170,19 @@ function onStartup() {
                     treeStartup();
                 }
             } 
-            var transaction = db.transaction(["reducedraw"], "readonly");
-            var storeRaw = transaction.objectStore('reducedraw');
+            var transaction = db.transaction(["raw"], "readonly");
+            var storeRaw = transaction.objectStore('raw');
             var cursorRaw = storeRaw.openCursor();
             cursorRaw.onsuccess = function (e) {
                 var resRaw = e.target.result;
                 if (resRaw) {
                     var myraw = resRaw.value;
                     //console.log(myraw);
-                    kitRawdata = myraw;
+                    kitRawdata[kitRawdata.length] = myraw;
                     //console.log(kitRawdata);
                     resRaw.continue();
                 }
-            } 
+            }
         }
     }
 }
@@ -192,4 +192,3 @@ function addOption(list, text, value){
     optn.value = value;
     list.add(optn);
 }
-
