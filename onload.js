@@ -142,11 +142,14 @@ function onStartup() {
             var canvas = document.getElementById('chromobrowser');
             scale = (canvas.width - 50) / chromolength[chromosomeIndex];
 
+/*
+
             $('#personAList').empty();
             $('#personBList').empty();
             $('#personCList').empty();
             $('#personDList').empty();
             $('#inCommonUser').empty();
+            */
             for (var i = 0; i < kitNames.length; i++) {
                 addOption(document.selectPersonA.personAList, kitNames[i], kitNames[i]);
                 addOption(document.selectPersonB.personBList, kitNames[i], kitNames[i]);
